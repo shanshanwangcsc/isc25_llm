@@ -83,12 +83,12 @@ class TrainingConfig:
     accuracy_dataset: str = "lmms-lab/ScienceQA"
 
     precision: str = "bf16"
-    batch_size: int = 8
+    batch_size: int = 4
     learning_rate: float = 2e-4
     num_epochs: int = 2
     gradient_accumulation_steps: int = 4
     max_length = 512
-    max_steps = 1 # set to 1 for debug
+    max_steps = 200 # set to 1 for debug
 
     checkpoint_freq: int = 1
     checkpoint_dir: str = "checkpoints"
