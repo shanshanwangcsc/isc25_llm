@@ -3,6 +3,7 @@ import torch.distributed as dist
 from torch import nn
 from torch.nn.parallel import DistributedDataParallel as DDP
 from config import TrainingConfig
+import os
 
 
 class DistributedSetup:
@@ -19,7 +20,7 @@ class DistributedSetup:
         if hw_config.num_devices > 1:
             dist.init_process_group(backend=backend, init_method="env://")
 
-        return dist.get_rank() if dist.is_initialized() else 0
+        return int(os.environ['LOCAL_RANK']) if dist.is_initialized() else 0
 
     @staticmethod
     def get_device(hw_config, local_rank=0):
