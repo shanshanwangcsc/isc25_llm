@@ -6,7 +6,7 @@ import torch
 
 @dataclass
 class CacheConfig:
-    base_cache_dir: str = os.path.expanduser("~/hf_cache")
+    base_cache_dir: str = os.getenv('HF_HOME', os.path.expanduser("~/hf_cache"))
     use_auth: bool = True
     hf_token: Optional[str] = None  # Set this via environment variable
 
