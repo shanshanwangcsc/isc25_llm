@@ -5,11 +5,15 @@ git clone https://github.com/phu0ngng/isc25_llm.git
 cd isc25_llm
 ```
 ## change a few setting in the config.py
-a. If you allocate one node (4 gpus) e.g., gputest node does not allow to allocate 2 nodes, then reduce the batch size to 4 so that you will not get out of memory error.
+a. reduce the batch size to 4 so that you will not get out of memory error.
 ```bash
 line 86, batch_size: int = 4 instead of 8
 ```
-But when you allocate 2 nodes (gpumedium), then you can switch back the bacth size of 8.
+Even if you allocate 2 nodes (gpumedium), the batch size is set for per device as shown in src/trainer.py line 30,
+```bash
+per_device_train_batch_size=self.config.batch_size
+```
+ so keeping the batch size to 4.
 
 b. For debugging, max steps is set to 1, for actual training, one needs to  change it to the actual training steps value
 ```bash
