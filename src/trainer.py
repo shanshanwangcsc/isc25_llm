@@ -84,7 +84,7 @@ class CustomTrainer:
             "epoch": epoch,
             # 'optimizer_state_dict': self.optimizer.state_dict(),
             # We need these two to verify your submission
-            "lora_state_dict": get_peft_model_state_dict(self.model),
+            "lora_state_dict": get_peft_model_state_dict(self.model.module),
             "config": self.config,
         }
 
