@@ -26,7 +26,7 @@ class CustomTrainer:
         training_args = TrainingArguments(
             output_dir=self.config.checkpoint_dir,
             num_train_epochs=self.config.num_epochs,
-            max_steps=self.config.max_steps,
+            #max_steps=self.config.max_steps,
             per_device_train_batch_size=self.config.batch_size,
             gradient_accumulation_steps=self.config.gradient_accumulation_steps,
             optim="adamw_torch_fused",
