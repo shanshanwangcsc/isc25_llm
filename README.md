@@ -20,7 +20,7 @@ per_device_train_batch_size=self.config.batch_size
 ```
  so keeping the batch size to 4.
 
-3. For debugging, max steps is set to 1, for actual training, one needs to  change it to the actual training steps value
+3. For debugging, max steps is set to 1, for actual training, one needs to  change it to the actual training steps value or comment out line #29 in src/trainer.py file for complete training.
 ```bash
 line 91: max_steps = 200 # set to 1 for debug
 ```
@@ -45,3 +45,8 @@ change the run.sh to our run_mahti_2nodes.sh if you want to use 2 nodes, then su
 ```bash
 sbatch run_mahti_2nodes.sh
 ```
+
+## Run on LUMI server
+change the run.sh to run_lumi_1node.sh if you want to use 1 node and run_lumi_2nodes.sh if you want to use 2 nodes. Then submit the job in the terminal accordlingly.
+
+The training logs are seen from loggings/speed_1node_lumi.log and loggings/speed_2nodes_lumi.log. From the training time, it can be seen that using 2 nodes will halve the time compared with using 1 node.
