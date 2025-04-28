@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=project_462000131
 #SBATCH --partition=dev-g
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=56
 #SBATCH --mem=480G
@@ -12,10 +12,10 @@ module purge
 module use /appl/local/csc/modulefiles/
 module load pytorch/2.5
 
-export HF_TOKEN="your token"
+
+export HF_TOKEN="you token"
 export HF_HOME="/scratch/project_462000131/${USER}/hf_cache"
 mkdir -p $HF_HOME
-
 export RDZV_HOST=$(hostname)
 export RDZV_PORT=29400
 
@@ -26,7 +26,7 @@ TORCHRUN_ARGS="--nnodes=$SLURM_JOB_NUM_NODES --nproc_per_node=8 --rdzv_id=$SLURM
 #srun torchrun $TORCHRUN_ARGS main.py --benchmark speed --device-type cuda
 
 # Speed benchmark and save stdout/loggings
-srun torchrun $TORCHRUN_ARGS main.py --benchmark speed --device-type cuda > loggings/speed_2nodes_lumi.log 2<&1
+srun torchrun $TORCHRUN_ARGS main.py --benchmark speed --device-type cuda > loggings/speed_1node_lumi.log 2<&1
 
 
 # Speed and accuracy benchmark
