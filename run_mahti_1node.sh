@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=project_2012524
-#SBATCH --partition=gputest
+#SBATCH --partition=gpumedium
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
 #SBATCH --cpus-per-task=128
